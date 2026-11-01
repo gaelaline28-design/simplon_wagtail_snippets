@@ -1,34 +1,40 @@
 {% extends "base.html" %}
+{% load wagtailimages_tags %}
 
 {% block body_class %}template-coachpage{% endblock %}
 
 {% block content %}
 
-<header>
-    <strong>Coach Max</strong>
-    <nav>
-        <a href="/">Accueil</a>
-        <a href="/le-coach/">Le Coach</a>
-        <a href="/nos-cours/">Nos cours</a>
-        <a href="/contact/">Contact</a>
-    </nav>
-</header>
 
 <div class="content">
-    <h1>Le Coach</h1>
+    <h1>Les Coachs</h1>
 
-    <div class="image-placeholder">Votre image ici</div>
+    <div class="content">
+        <h1>Nos Coachs</h1>
 
-    <p>
-        Je m'appelle Max, coach sportif depuis plus de dix ans. J'ai accompagné
-        des dizaines de personnes dans leur remise en forme, en adaptant chaque
-        séance à leurs objectifs et à leur rythme.
-    </p>
-    <p>
-        Diplômé d'État, spécialisé en préparation physique et en renforcement
-        musculaire, je crois qu'un bon accompagnement se construit sur mesure,
-        jamais avec un programme tout fait.
-    </p>
-</div>
+        <ul class="coachs_list">
+            {% for coach in coach_list %}
+            <li class="coachs-card">
+                <!-- Affichage de l'image proprement -->
+                {% if coach.photo %}
+                    {% image coach.photo width-400 class="portrait-coach" %}
+                {% endif %}
+
+                <!-- Affichage du nom du coach -->
+                <h3>{{ coach.nomcoach }}</h3>
+
+                <!-- Affichage du sport du coach -->
+                <p>Sport : {{ coach.sport }}</p>
+
+                <!-- Affichage de la date d'arrivée (dd/mm/aaaa) du coach -->
+                <p>Arrivé le : {{ coach.datearriver|date:"d/m/Y" }}</p>
+            
+                <!-- Affichage de la description du coach -->
+                <p>{{coach.description}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>    
 
 {% endblock content %}
