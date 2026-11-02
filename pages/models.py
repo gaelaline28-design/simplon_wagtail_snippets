@@ -1,5 +1,4 @@
 from django.db import models
-
 from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
@@ -51,7 +50,7 @@ class Coachs(models.Model):
         return self.nomcoach
 
 
-class CoachPage(Page):
+class CoachsPage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context["coachs_list"] = Coachs.objects.all()

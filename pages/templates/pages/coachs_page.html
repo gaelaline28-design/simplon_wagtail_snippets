@@ -13,24 +13,24 @@
         <h1>Nos Coachs</h1>
 
         <ul class="coachs_list">
-            {% for coach in coach_list %}
+            {% for coachs in coachs_list %}
             <li class="coachs-card">
                 <!-- Affichage de l'image proprement -->
-                {% if coach.photo %}
-                    {% image coach.photo width-400 class="portrait-coach" %}
+                {% if coachs.photo %}
+                    {% image coachs.photo width-400 class="portrait-coachs" %}
                 {% endif %}
 
                 <!-- Affichage du nom du coach -->
-                <h3>{{ coach.nomcoach }}</h3>
+                <h2>{{ coachs.nomcoach }}</h2>
 
                 <!-- Affichage du sport du coach -->
-                <p>Sport : {{ coach.sport }}</p>
+                <p>Sport : {{ coachs.sport }}</p>
 
                 <!-- Affichage de la date d'arrivée (dd/mm/aaaa) du coach -->
-                <p>Arrivé le : {{ coach.datearriver|date:"d/m/Y" }}</p>
+                <p>Arrivé le : {{ coachs.datearriver|date:"d/m/Y" }}</p>
             
                 <!-- Affichage de la description du coach -->
-                <p>{{coach.description}}</p>
+                <p>{{coachs.description}}</p>
             </li>
             {% endfor %}
         </ul>
