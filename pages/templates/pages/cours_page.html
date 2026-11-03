@@ -12,12 +12,14 @@
     <h1>Nos cours</h1>
 
     <ul class="cours-list">
+        # courslist vient de getcontext() : sans cette méthode, cette variable n'existerait pas ici 
         {% for cours in cours_list %}
         <li class="cours-card">
-            <h3>{{cours.nom}}</h3>
+            <h2>{{cours.nom}}</h2>
             <p>{{cours.horaire}}. {{cours.niveau}}.</p>
             <p>{{cours.description}}</p>
         </li>
+        # endfor ferme la boucle : tout ce qui est entre for et endfor est répété une fois par cours #
         {% endfor %}
     </ul>
 </div>
